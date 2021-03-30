@@ -1,5 +1,7 @@
 //La liste de tout les apprenants
-var apprenants = [];
+var apprenants = ['Lucas Steichen', 'Noureddine Benomar', 'Noureddine Benomar', 'Tamara ALCALA JIMENEZ',
+'Valentin Creuillenet','Alexandre Labsi', 'Maxime Guichon', 'Yohan Beneito', 'Laurene Georges', 'Sidney Carlos',
+'Juan Roussille','Lorenzo Cima', 'Maïalen Watrigant'];
 
 //La liste de tout les apprenants considéres comme "forts"
 var strongLevel = [];
@@ -7,7 +9,7 @@ var strongLevel = [];
 //La lsite de tout les apprenants considérés comme "faibles"
 var weakLevel = [];
 
-//La lsite des apprenants indisponible le lundi
+//La liste des apprenants indisponible le lundi
 var cantMonday = [];
 
 //La liste des apprenants indisponible le mardi
@@ -23,14 +25,24 @@ var cantThursday = [];
 var cantFriday = [];
 
 
+
 /**
  * Cette fonction rempli un menu de choix avec une liste
  * @param {*} drop Le menu a remplir
- * @param {*} list La lsite avec laquel le remplir
+ * @param {*} list La liste avec laquel le remplir
  */
-function fillDropdown(drop,list){
 
+
+let select = document.getElementsByName('list_apprenant')[0];
+
+function fillDropdown(drop,list){
+    for(let i=0; i< list.length; i++){
+        let opt = document.createElement('option');
+        opt.innerHTML = list[i];
+        drop.appendChild(opt);
+    }
 }
+
 
 /**
  * Cette fonction ajoute un element a une liste HTML
@@ -98,3 +110,13 @@ function generateGroups(){
 function displayGroups(groups){
 
 }
+
+/**
+ * Cette fonction distribue sur chaque liste déroulante tout les apprenants
+ */
+function fillAllSelects(){
+    
+}
+
+fillDropdown(select, apprenants);
+

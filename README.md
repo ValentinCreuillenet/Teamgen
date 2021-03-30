@@ -1,6 +1,6 @@
 # CV_LA_TEAMGEN
 
-### Ce projet est un générateur de groupes aléatoire qui est censé permettre au formateur de crée les groupes d'apprenants de la semaine a venir en quelques cliques depuis le confort de son trône.
+### Ce projet est un générateur de groupes aléatoire qui est censé permettre au formateur de créer les groupes d'apprenants de la semaine a venir en quelques cliques depuis le confort de son trône.
 
 ## Fonctionalités de prévu sur le projet : 
 * Permettre a l'utilsateur de choisir si il veut faires les équipes par niveau équivalents en s'assurant un nombre équivalants de 

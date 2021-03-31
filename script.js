@@ -33,6 +33,7 @@ var cantFriday = [];
  */
 
 
+let selectall = document.getElementsByName('list_apprenant');
 let select = document.getElementsByName('list_apprenant')[0];
 
 function fillDropdown(drop,list){
@@ -115,8 +116,16 @@ function displayGroups(groups){
  * Cette fonction distribue sur chaque liste déroulante tout les apprenants
  */
 function fillAllSelects(){
-    
+    for(let i=0; i<selectall.length; i++){
+        fillDropdown(selectall[i], apprenants)
+        
+        
+    }
 }
 
-fillDropdown(select, apprenants);
+/**
+ * Appel des fonctions
+ */
 
+fillDropdown(select, apprenants);
+fillAllSelects()

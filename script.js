@@ -70,6 +70,21 @@ function removeFromList(list,element){
 function getLevels(level){
 
 }
+/**
+ * Cette fonction indique si un apprenants ets considéré comme fort part le formateur
+ * @param {*} leanrer L'apprenant à vérifier
+ */
+function isStrong(leanrer){
+
+}
+
+/**
+ * Cette fonction indique si un apprenants est considéré comme faible par le formateur
+ * @param {*} learner 
+ */
+function isWeak(learner){
+
+}
 
 /**
  * Cette fonction retourne la liste des apprenants indsiponible pour un jour donnée en argument
@@ -98,10 +113,74 @@ function canBeinGroupTwo(learner){
 }
 
 /**
- * Cette fonction génère les deux groupe d'apprenants de la semaine et retourne ces groupe dans une liste
+ * Cette fonction génère duex groupe d'apprenants en fonction contraites choisits par l'utilisateur et retourne les deux groupe dans un tableau
+ * @param {*} learners La liste de tout les apprenants
  */
-function generateGroups(){
+function generateGroups(learners){
+    let groupOne = [];                      //Le groupe 1
+    let groupTwo = [];                      //Le groupe 2
+    let groups = [groupOne,groupTwo];       //La liste des groupes qui seront retourné a la fin du traitement
+    let strongsOne = 0;                     //Le nombre d'apprenants "forts" dans le groupe 1
+    let strongTwo = 0;                      //Le nombre d'apprenants "forts" dans le groupe 2
+    let weakOne = 0;                        //Le nombre d'apprenants "faible" dans le groupe 1
+    let weakTwo = 0;                        //Le nombre d'apprenants "faible" dans le groupe 2
+    let totalLearners = learners.length;    //Le nombre total d'apprenants
 
+    while( (groupOne.length + groupTwo.length) < totalLearners ){
+            
+        learners.foreach( learner =>{
+
+            if(!canBeinGroupOne(learner)){
+                groupTwo += learner;
+                if(isStrong(leanrer))strongTwo++;
+                if(isWeak(leanrer))weakTwo++;
+                learners.splice(learners.indexOf(leanrer), 1 );
+            }
+            if(!canBeinGroupTwo(learner)){
+                groupOne += learner;
+                if(isStrong(leanrer))strongOne++;
+                if(isWeak(leanrer))weakOne++;
+                learners.splice(learners.indexOf(leanrer), 1 );
+            } 
+
+            let rand = Math.round(Math.random);
+
+            if(rand === 0 ){
+                if(isStrong(learner) && strongsOne <= strongTwo && groupOne.length < Math.ceil(totalLearners/2) ){
+                    groupOne += learner;
+                    strongsOne++;
+                    learners.splice(learners.indexOf(leanrer), 1 );
+
+                } else if(isWeak(learner) && weakOne <= weakTwo && groupOne.length < Math.ceil(totalLearners/2)){
+                    groupOne += learner;
+                    weakOne++;
+                    learners.splice(learners.indexOf(leanrer), 1 );
+
+                } else if(groupOne.length < Math.ceil(totalLearners/2)){
+                    groupOne += leanrer;
+                    learners.splice(learners.indexOf(leanrer), 1 );
+                }
+
+            } else {
+                if(isStrong(learner) && strongsTwo <= strongOne && groupTwo.length < Math.ceil(totalLearners/2) ){
+                    groupTwo += learner;
+                    strongsTwo++;
+                    learners.splice(learners.indexOf(leanrer), 1 );
+
+                } else if(isWeak(learner) && weakTwo <= weakOne && groupTwo.length < Math.ceil(totalLearners/2)){
+                    groupTwo += learner;
+                    weakTwo++;
+                    learners.splice(learners.indexOf(leanrer), 1 );
+                    
+                } else if(groupTwo.length < Math.ceil(totalLearners/2)){
+                    groupTwo += leanrer;
+                    learners.splice(learners.indexOf(leanrer), 1 );
+                }
+            }
+
+        })
+    }
+    return groups;
 }
 
 /**

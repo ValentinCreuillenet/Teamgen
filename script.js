@@ -65,7 +65,6 @@ function removeFromList(list,element){
 }
 
 /**
-<<<<<<< HEAD
  * Cette fonction indique si un apprenants ets considéré comme fort part le formateur
  * @param {*} leanrer L'apprenant à vérifier
  */
@@ -85,8 +84,6 @@ function isWeak(learner){
 
 
 /**
-=======
->>>>>>> displayGroups
  * Cette fonction indique si un apprenants passé en argument peut être mit dans le groupe 1 en fonction de ses indisponibilités
  * (Le groupe 1 est présent le Lund/Mercredi/Vendredi)
  * @param {*} leanrer L'apprenant a vérfifer
@@ -221,11 +218,7 @@ function displayGroups(groups){
  */
 function fillAllSelects(){
     for(let i=0; i<selectall.length; i++){
-<<<<<<< HEAD
-        fillDropdown(selectall[i], apprenants);
-=======
         fillDropdown(selectall[i], apprenants);  
->>>>>>> displayGroups
     }
 }
 

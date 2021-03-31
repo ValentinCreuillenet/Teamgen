@@ -213,3 +213,52 @@ function fillAllSelects(){
 
 fillDropdown(select, apprenants);
 fillAllSelects()
+
+/**
+ * Gestionnaire d'event
+ */
+
+/**
+ * Cette fonction ajoute un EventListener sur un bouton pour y ajouter la fonction addToList
+ * @param {*} idBtn L'ID du boutton sur lequel ajouter l'event
+ * @param {*} idList L'ID de la list a passer en argument
+ * @param {*} idSelect L'ID du select dans lequel chercher l'element a passer en argument
+ */
+function addEventAdd(idBtn,idList,idSelect){
+    document.getElementById(idBtn).addEventListener("click",()=>{
+        addToList(document.getElementById(idList),
+        document.getElementById(idSelect).options[document.getElementById(idSelect)].innerHTML);
+    })
+}
+/**
+ * 
+ * @param {*} idBtn L'ID du boutton sur lequel ajouter l'event
+ * @param {*} idList L'ID de la list a passer en argument
+ * @param {*} idSelect L'ID du select dans lequel chercher l'element a passer en argument
+ */
+function addEventRemove(idBtn,idList,idSelect){
+    document.getElementById(idBtn).addEventListener("click",()=>{
+        removeFromList(document.getElementById(idList),
+        document.getElementById(idSelect).options[document.getElementById(idSelect)].innerHTML);
+    })
+}
+
+
+//Quand on appuie sur le bouton ajouter a la liste des forts l'event s'execute
+addEventAdd("add strong","list strong","strongs")
+
+//Quand on appuie sue le bouton supprimer a la liste des forts l'event s'execute
+addEventRemove("remove strong","list strong","strongs")
+
+//Quand on appuie sur le bouton ajouter a la liste des faibles, l'event s'execute
+addEventAdd("add weak", "list weak","weaks");
+ 
+//Quand on appuie sur le bouton supprimer a la liste des faibles, l'event s'execute
+addEventRemove("remove weak","list weak","weaks");
+ 
+
+
+//Qaund on appuie sur le bouton générer les groupes, les groupes sont généré
+document.getElementById("TeamGen").addEventListener("click",()=>{
+    displayGroups(generateGroups());
+})

@@ -85,16 +85,18 @@ function getUnavailability(day){
  * @param {*} leanrer L'apprenant a vérfifer
  */
 function canBeinGroupOne(leanrer){
-
+    if(!getUnavailability("Lundi").includes(leanrer) && !getUnavailability("Mercredi").includes(leanrer) && !getUnavailability("Vendredi").includes(leanrer)) return true;
+    else return false;
 }
 
 /**
  * Cette fonction indique si un apprenant passé en argument peut être mit dans le groupe 2 en fonction de ses indisponibilités 
- * (Le groupe 2 est présent le Mercredi/Jeudi)
+ * (Le groupe 2 est présent le Mardi/Jeudi)
  * @param {*} learner 
  */
 function canBeinGroupTwo(learner){
-
+    if(!getUnavailability("Mardi").includes(learner) && !getUnavailability("Jeudi").includes(learner)) return true;
+    else return false;
 }
 
 /**

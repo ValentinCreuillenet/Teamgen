@@ -33,22 +33,25 @@ var cantFriday = [];
  */
 
 function fillDropdown(drop,list){
-    for(let i=0; i< list.length; i++){
+    for(let i=0; i<list.length; i++){
         let opt = document.createElement('option');
         opt.innerHTML = list[i];
         drop.appendChild(opt);
     }
 }
-
 /**
  * Cette fonction ajoute un element a une liste HTML
- * @param {*} list La liste a laquelle ajouter l'element
- * @param {*} element L'element a rajouter
+ * @param {*} list La liste a laquelle ajouter l'element            UL
+ * @param {*} element L'element a rajouter              selectall[i]
  */
-function addToList(list,element){
 
+function addToList(list,element){
+        var li = document.createElement('li');
+        li.innerText = element;
+        list.appendChild(li); 
 }
 
+  
 /**
  * Cette fonction supprime un element d'une liste HTML
  * @param {*} list La liste a laquelle supprimer l'element
@@ -115,8 +118,7 @@ function displayGroups(groups){
  */
 function fillAllSelects(){
     for(let i=0; i<selectall.length; i++){
-        fillDropdown(selectall[i], apprenants)
-        
-        
+        fillDropdown(selectall[i], apprenants);
     }
 }
+

@@ -59,22 +59,6 @@ function removeFromList(list,element){
 }
 
 /**
- * Cette fonction retourne une list des apprenants d'un niveau passé en argument
- * @param {*} level Le niveau des apprenants a récupérer
- */
-function getLevels(level){
-
-}
-
-/**
- * Cette fonction retourne la liste des apprenants indsiponible pour un jour donnée en argument
- * @param {*} day Le jour a verifiée les apprenats indisponibles
- */
-function getUnavailability(day){
-
-}
-
-/**
  * Cette fonction indique si un apprenants passé en argument peut être mit dans le groupe 1 en fonction de ses indisponibilités
  * (Le groupe 1 est présent le Lund/Mercredi/Vendredi)
  * @param {*} leanrer L'apprenant a vérfifer
@@ -100,20 +84,46 @@ function generateGroups(){
 }
 
 /**
- * Cette fonction affiche les groupes d'apprenant de ala semaine dans un tableau HTML
- * @param {*} groups La lsite des groupes d'apprenants a afficher
+ * Cette fonction affiche les groupes d'apprenant de la semaine dans un tableau HTML
+ * @param {*} groups La liste des groupes d'apprenants a afficher
  */
 function displayGroups(groups){
+    let table = document.createElement('table');
+    let tbody = document.createElement('tbody');
+    let th1 = document.createElement('th');
+    let th2 = document.createElement('th');
+    th1.innerText = 'Groupe 1';
+    th2.innerText = 'Groupe 2';
 
+    // table.innerHTML = groups 
+
+        
+    for(let i=0; i<8; i++){
+        let tr = document.createElement('tr');
+        tr.innerText = "?";
+        
+        for(let j=0; j<2; j++){
+            let td = document.createElement('td');
+            td.innerText = "?";
+            tr.appendChild(td);
+        }
+        th1.appendChild(tr)
+        th2.appendChild(tr)
+        tbody.appendChild(th1)
+        tbody.appendChild(th2)
+       
+    }
+    table.appendChild(tbody);
 }
+
+
+
 
 /**
  * Cette fonction distribue sur chaque liste déroulante tout les apprenants
  */
 function fillAllSelects(){
     for(let i=0; i<selectall.length; i++){
-        fillDropdown(selectall[i], apprenants)
-        
-        
+        fillDropdown(selectall[i], apprenants);  
     }
 }

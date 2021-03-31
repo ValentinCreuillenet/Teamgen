@@ -32,50 +32,45 @@ var cantFriday = [];
  * @param {*} list La liste avec laquel le remplir
  */
 
-
-let selectall = document.getElementsByName('list_apprenant');
-let select = document.getElementsByName('list_apprenant')[0];
-
 function fillDropdown(drop,list){
-    for(let i=0; i< list.length; i++){
+    for(let i=0; i<list.length; i++){
         let opt = document.createElement('option');
         opt.innerHTML = list[i];
         drop.appendChild(opt);
     }
 }
-
-
 /**
  * Cette fonction ajoute un element a une liste HTML
- * @param {*} list La liste a laquelle ajouter l'element
- * @param {*} element L'element a rajouter
+ * @param {*} list La liste a laquelle ajouter l'element            UL
+ * @param {*} element L'element a rajouter              selectall[i]
  */
-function addToList(list,element){
 
+function addToList(list,element){
+        var li = document.createElement('li');
+        li.innerText = element;
+        list.appendChild(li); 
 }
 
+  
 /**
  * Cette fonction supprime un element d'une liste HTML
  * @param {*} list La liste a laquelle supprimer l'element
  * @param {*} element L'element a supprimer
  */
 function removeFromList(list,element){
-
+    var index = list.indexOf(element);
+    if(index > -1){
+        list.splice(index,element);
+    }
 }
 
-/**
- * Cette fonction retourne une list des apprenants d'un niveau passé en argument
- * @param {*} level Le niveau des apprenants a récupérer
- */
-function getLevels(level){
-
-}
 /**
  * Cette fonction indique si un apprenants ets considéré comme fort part le formateur
  * @param {*} leanrer L'apprenant à vérifier
  */
 function isStrong(leanrer){
-
+    if(strongLevel.includes(learner))return true;
+    else return false;
 }
 
 /**
@@ -83,16 +78,10 @@ function isStrong(leanrer){
  * @param {*} learner 
  */
 function isWeak(learner){
-
+    if(weakLevel.includes(learner))return true;
+    else return false;
 }
 
-/**
- * Cette fonction retourne la liste des apprenants indsiponible pour un jour donnée en argument
- * @param {*} day Le jour a verifiée les apprenats indisponibles
- */
-function getUnavailability(day){
-
-}
 
 /**
  * Cette fonction indique si un apprenants passé en argument peut être mit dans le groupe 1 en fonction de ses indisponibilités
@@ -201,9 +190,7 @@ function displayGroups(groups){
  */
 function fillAllSelects(){
     for(let i=0; i<selectall.length; i++){
-        fillDropdown(selectall[i], apprenants)
-        
-        
+        fillDropdown(selectall[i], apprenants);
     }
 }
 

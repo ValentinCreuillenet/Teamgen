@@ -32,10 +32,6 @@ var cantFriday = [];
  * @param {*} list La liste avec laquel le remplir
  */
 
-
-let selectall = document.getElementsByName('list_apprenant');
-let select = document.getElementsByName('list_apprenant')[0];
-
 function fillDropdown(drop,list){
     for(let i=0; i< list.length; i++){
         let opt = document.createElement('option');
@@ -43,7 +39,6 @@ function fillDropdown(drop,list){
         drop.appendChild(opt);
     }
 }
-
 
 /**
  * Cette fonction ajoute un element a une liste HTML
@@ -122,10 +117,3 @@ function fillAllSelects(){
         
     }
 }
-
-/**
- * Appel des fonctions
- */
-
-fillDropdown(select, apprenants);
-fillAllSelects()

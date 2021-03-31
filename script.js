@@ -85,7 +85,9 @@ function getUnavailability(day){
  * @param {*} leanrer L'apprenant a vérfifer
  */
 function canBeinGroupOne(leanrer){
-    if(!getUnavailability("Lundi").includes(leanrer) && !getUnavailability("Mercredi").includes(leanrer) && !getUnavailability("Vendredi").includes(leanrer)) return true;
+    if(!cantMonday.includes(leanrer) 
+    && !cantWedensday.includes(leanrer) 
+    && !cantFriday.includes(leanrer)) return true;
     else return false;
 }
 
@@ -95,7 +97,8 @@ function canBeinGroupOne(leanrer){
  * @param {*} learner 
  */
 function canBeinGroupTwo(learner){
-    if(!getUnavailability("Mardi").includes(learner) && !getUnavailability("Jeudi").includes(learner)) return true;
+    if(!cantTuesday.includes(learner) 
+    && !cantThursday.includes(learner)) return true;
     else return false;
 }
 

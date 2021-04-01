@@ -196,33 +196,33 @@ function generateGroups(allLearners){
  * @param {*} groups La liste des groupes d'apprenants a afficher
  */
 function displayGroups(groups){
+
+    let oldTable = document.getElementById("teams");
+    if(oldTable)oldTable.remove();
     let table = document.createElement('table');
-    let tbody = document.createElement('tbody');
+    table.id="teams";
     let th1 = document.createElement('th');
     let th2 = document.createElement('th');
     th1.innerText = 'Groupe 1';
     th2.innerText = 'Groupe 2';
 
-    // table.innerHTML = groups 
-
-        
-    for(let i=0; i<8; i++){
-        let tr = document.createElement('tr');
-        tr.innerText = "?";
-        
-        for(let j=0; j<2; j++){
-            let td = document.createElement('td');
-            td.innerText = "?";
-            tr.appendChild(td);
-        }
-        th1.appendChild(tr)
-        th2.appendChild(tr)
-        tbody.appendChild(th1)
-        tbody.appendChild(th2)
-       
-    }
-    table.appendChild(tbody);
+    let header = document.createElement("tr");
+    header.appendChild(th1);
+    header.appendChild(th2);
+    table.appendChild(header);
     document.body.appendChild(table);
+
+    for(i=0;i<Math.ceil(apprenants.length/2);i++){
+        let row = document.createElement("tr");
+        let cell1 = document.createElement("td");
+        let cell2 = document.createElement("td");
+        table.appendChild(row);
+        row.appendChild(cell1);
+        row.appendChild(cell2);
+        
+        cell1.innerText = (groups[0][i] ? groups[0][i] : "");
+        cell2.innerText = (groups[1][i] ? groups[1][i] : "");
+    }
 }
 
 

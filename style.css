@@ -1,6 +1,10 @@
 * {
     text-align: center;
 }
+body {
+
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/9/519/764/mountains-best-for-desktop-background-wallpaper-preview.jpg');
+}
 h1 {
     text-shadow: 3px 3px 7px #fff;
 }

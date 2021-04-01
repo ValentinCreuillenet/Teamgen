@@ -8,176 +8,177 @@
     </head>
 
     <body>
-        <!-- Titre du générateur -->
-        <h1>Générateur d'équipes BeWeb</h1>
-        <!-- Demande -->
-        <p>Voulez vous séparés les groupes par niveaux <input type="checkbox" id=""></p>
-        <!-- Afficher tout les apprenants et en séléctionner ceux avec un bon niveau -->
-        <section class="container">
-            <article>
-                <label for="">Séléctionnez les apprenants avec un bon niveau</label>
+        <div class="global_container">
+            <!-- Titre du générateur -->
+            <h1>Générateur d'équipes BeWeb</h1>
+            <!-- Demande -->
+            <p>Voulez vous séparés les groupes par niveaux <input type="checkbox" id=""></p>
+            <!-- Afficher tout les apprenants et en séléctionner ceux avec un bon niveau -->
+            <section class="container">
+                <article>
+                    <label for="">Séléctionnez les apprenants avec un bon niveau</label>
 
-                <select  name="list_apprenant" id="strongs">
-                    <option value=""></option>
-                </select>
-                <br>
-                <!-- button d'éxécution -->
-                <button id="add strong" class ="add" type="submit">Ajouter</button>
-                <button id="remove strong" class ="remove" type="submit">Supprimer</button> 
-            </article>
-        <!-- Contient la liste des apprenants de bon niveau -->
-            <article>  
-                <label for="">Listes des apprenants avec un bon niveau</label>
-                <ul id="list strong">
-                    <li></li>
-                </ul>
-            </article>
-        </section> 
+                    <select  name="list_apprenant" id="strongs">
+                        <option value=""></option>
+                    </select>
+                    <br>
+                    <!-- button d'éxécution -->
+                    <button id="add strong" class ="add" type="submit">Ajouter</button>
+                    <button id="remove strong" class ="remove" type="submit">Supprimer</button> 
+                </article>
+            <!-- Contient la liste des apprenants de bon niveau -->
+                <article>  
+                    <label class="cc" for="">Listes des apprenants avec un bon niveau</label>
+                    <ul id="list strong">
+                        <li></li>
+                    </ul>
+                </article>
+            </section> 
 
-<!-- ------------------------------------------------------------------------------------------------ -->
-     
-            <!-- Afficher tout les apprenants et en séléctionner ceux avec un bas niveau -->
-        <section class="container">
-            <article>
-                <label for="">Séléctionnez les apprenants avec bas niveau</label>
-    
-                <select name="list_apprenant" id="weaks">
-                    <option value=""></option>
-                </select>
-                <br>
-                <!-- button d'éxécution -->
-                <button id="add weak" class="add" type="submit">Ajouter</button>
-                <button id="remove weak" class="remove" type="submit">Supprimer</button> 
-            </article> 
-
-    
-            <!-- Contient la liste des apprenants de bas niveau -->
-            <article>  
-                <label for="">Listes des apprenants avec un bas niveau</label>
-                <ul id="list weak" id="">
-                    <li></li>
-                </ul>
-            </article>
-        </section> 
-
-<!-- ------------------------------------------------------------------------------------------------ -->
-        <!-- Afficher tout les apprenants et en séléctionner ceux qui ne sont pas la chaque jours -->
-        <section class="container">
-            <article>
-                <label for="">Apprenants indisponible le Lundi ?</label>
+    <!-- ------------------------------------------------------------------------------------------------ -->
         
-                <select name="list_apprenant" id="">
-                    <option value=""></option>
-                </select>
-                <br>
-                <button id="add monday" class="add" type="submit">Ajouter</button>
-                <button id="remove monday" class="remove" type="submit">Supprimer</button> 
-            </article>
+                <!-- Afficher tout les apprenants et en séléctionner ceux avec un bas niveau -->
+            <section class="container">
+                <article>
+                    <label for="">Séléctionnez les apprenants avec bas niveau</label>
         
-            <!-- Afficher les apprenants indisponible chaque jours -->
-            <article>  
-                <label for="">Indisponible le Lundi</label>
-                <ul id="monday">
-                    <li></li>
-                </ul>
-            </article>
-        </section> 
+                    <select name="list_apprenant" id="weaks">
+                        <option value=""></option>
+                    </select>
+                    <br>
+                    <!-- button d'éxécution -->
+                    <button id="add weak" class="add" type="submit">Ajouter</button>
+                    <button id="remove weak" class="remove" type="submit">Supprimer</button> 
+                </article> 
 
-<!-- ------------------------------------------------------------------------------------------------ -->
-
-        <section class="container">
-            <article>
-                <label for="">Apprenants indisponible le Mardi ?</label>
         
-                <select name="list_apprenant" id="">
-                    <option value=""></option>
-                </select>
-                <br>
-                <button class="add" type="submit">Ajouter</button>
-                <button class="remove" type="submit">Supprimer</button> 
-            </article>
+                <!-- Contient la liste des apprenants de bas niveau -->
+                <article>  
+                    <label class="cc" for="">Listes des apprenants avec un bas niveau</label>
+                    <ul id="list weak" id="">
+                        <li></li>
+                    </ul>
+                </article>
+            </section> 
+
+    <!-- ------------------------------------------------------------------------------------------------ -->
+            <!-- Afficher tout les apprenants et en séléctionner ceux qui ne sont pas la chaque jours -->
+            <section class="container">
+                <article>
+                    <label for="">Apprenants indisponible le Lundi ?</label>
             
-            <article>  
-                <label for="">Indisponible le Mardi</label>
-                <ul id="tuesday">
-                    <li></li>
-                </ul>
-            </article>
-        </section>
-
-<!-------------------------------------------------------------------------------------------------- -->
-        
-        <section class="container">
-            <article>
-                <label for="">Apprenants indisponible le Mecredi ?</label>
-        
-            <select name="list_apprenant" id="">
-                <option value=""></option>
-            </select>
-            <br>
-            <button class="add" type="submit">Ajouter</button>
-            <button class="remove" type="submit">Supprimer</button> 
-            </article>
+                    <select name="list_apprenant" id="">
+                        <option value=""></option>
+                    </select>
+                    <br>
+                    <button id="add monday" class="add" type="submit">Ajouter</button>
+                    <button id="remove monday" class="remove" type="submit">Supprimer</button> 
+                </article>
             
-            <article>  
-                <label for="">Indisponible le Mercredi</label>
-                <ul id="wednesday">
-                    <li></li>
-                </ul>
-            </article>
-        </section>
+                <!-- Afficher les apprenants indisponible chaque jours -->
+                <article>  
+                    <label class="cc" for="">Indisponible le Lundi</label>
+                    <ul id="monday">
+                        <li></li>
+                    </ul>
+                </article>
+            </section> 
 
-<!-------------------------------------------------------------------------------------------------- -->
+    <!-- ------------------------------------------------------------------------------------------------ -->
 
-        <section class="container">
-            <article>
-                <label for="">Apprenants indisponible le Jeudi ?</label>
-        
+            <section class="container">
+                <article>
+                    <label for="">Apprenants indisponible le Mardi ?</label>
+            
+                    <select name="list_apprenant" id="">
+                        <option value=""></option>
+                    </select>
+                    <br>
+                    <button class="add" type="submit">Ajouter</button>
+                    <button class="remove" type="submit">Supprimer</button> 
+                </article>
+                
+                <article>  
+                    <label class="cc" for="">Indisponible le Mardi</label>
+                    <ul id="tuesday">
+                        <li></li>
+                    </ul>
+                </article>
+            </section>
+
+    <!-------------------------------------------------------------------------------------------------- -->
+            
+            <section class="container">
+                <article>
+                    <label for="">Apprenants indisponible le Mecredi ?</label>
+            
                 <select name="list_apprenant" id="">
                     <option value=""></option>
                 </select>
                 <br>
                 <button class="add" type="submit">Ajouter</button>
                 <button class="remove" type="submit">Supprimer</button> 
-            </article>
-              
-            <article>  
-                <label for="">Indisponible le Jeudi</label>
-                <ul id="thursday">
-                    <li></li>
-                </ul>
-            </article>
-        </section>
+                </article>
+                
+                <article>  
+                    <label class="cc" for="">Indisponible le Mercredi</label>
+                    <ul id="wednesday">
+                        <li></li>
+                    </ul>
+                </article>
+            </section>
 
-<!-------------------------------------------------------------------------------------------------- -->
+    <!-------------------------------------------------------------------------------------------------- -->
 
-        <section class="container">
-            <article>
-                <label for="">Apprenants indisponible le Vendredi ?</label>
-        
-                <select name="list_apprenant" id="">
-                    <option value=""></option>
-                </select>
-                <br>
-                <button class="add" type="submit">Ajouter</button>
-                <button class="remove" type="submit">Supprimer</button> 
-            </article>
+            <section class="container">
+                <article>
+                    <label for="">Apprenants indisponible le Jeudi ?</label>
+            
+                    <select name="list_apprenant" id="">
+                        <option value=""></option>
+                    </select>
+                    <br>
+                    <button class="add" type="submit">Ajouter</button>
+                    <button class="remove" type="submit">Supprimer</button> 
+                </article>
+                
+                <article>  
+                    <label class="cc" for="">Indisponible le Jeudi</label>
+                    <ul id="thursday">
+                        <li></li>
+                    </ul>
+                </article>
+            </section>
 
-        
-            <article>  
-                <label for="">Indisponible le Vendredi</label>
-                <ul id="friday">
-                    <li></li>
-                </ul>
-            </article>
-        </section>
-    </body>
+    <!-------------------------------------------------------------------------------------------------- -->
 
-<!-- ------------------------------------------------------------------------------------------------ -->
+            <section class="container">
+                <article>
+                    <label for="">Apprenants indisponible le Vendredi ?</label>
+            
+                    <select name="list_apprenant" id="">
+                        <option value=""></option>
+                    </select>
+                    <br>
+                    <button class="add" type="submit">Ajouter</button>
+                    <button class="remove" type="submit">Supprimer</button> 
+                </article>
 
-    <footer>
-        <button type="submit" id="TeamGen">Générer les groupes</button>
-        <script src="script.js"></script>
-    </footer>
+            
+                <article>  
+                    <label class="cc" for="">Indisponible le Vendredi</label>
+                    <ul id="friday">
+                        <li></li>
+                    </ul>
+                </article>
+            </section>
+        </body>
 
+    <!-- ------------------------------------------------------------------------------------------------ -->
+
+        <footer>
+            <button type="submit" id="TeamGen">Générer les groupes</button>
+            <script src="script.js"></script>
+        </footer>
+    </div>
 </html>

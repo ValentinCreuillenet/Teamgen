@@ -226,8 +226,8 @@ function fillAllSelects(){
  * Appel des fonctions
  */
 
-fillDropdown(select, apprenants);
-fillAllSelects()
+// fillDropdown(select, apprenants);
+// fillAllSelects()
 
 /**
  * Gestionnaire d'event

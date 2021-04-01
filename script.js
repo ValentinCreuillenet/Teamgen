@@ -310,10 +310,10 @@ addEventAdd("add tuesday","tuesday","tuesdays",cantTuesday)
 addEventRemove("remove tuesday","tuesday","tuesdays",cantTuesday)
 
 //Quand on appuie sur le bouton ajouter a la liste Mercredi
-addEventAdd("add wedensday","wedensday","wedensdays",cantWedensday)
+addEventAdd("add wednesday","wednesday","wednesdays",cantWedensday)
 
 //Quand on appuie sue le bouton supprimer a la liste Mercredi
-addEventRemove("remove wedensday","wedensday","wedensdays",cantWedensday)
+addEventRemove("remove wednesday","wednesday","wednesdays",cantWedensday)
 
 //Quand on appuie sur le bouton ajouter a la liste Jeudi
 addEventAdd("add thursday","thursday","thursdays",cantThursday)

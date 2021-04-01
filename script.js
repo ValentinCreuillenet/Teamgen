@@ -58,10 +58,7 @@ function addToList(list,element){
  * @param {*} element L'element a supprimer
  */
 function removeFromList(list,element){
-    var index = list.indexOf(element);
-    if(index > -1){
-        list.splice(index,element);
-    }
+    element.remove();
 }
 
 /**

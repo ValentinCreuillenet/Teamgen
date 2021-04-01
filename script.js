@@ -44,10 +44,18 @@ function fillDropdown(drop,list){
  * @param {*} element L'element a rajouter              selectall[i]
  */
 
-function addToList(list,element){
+function addToList(list,element,arr){
+        let isAlreadyInList = false;
+
+        for(i=0;i<list.children.length;i++){
+            if (list.children[i].innerHTML==element)isAlreadyInList=true;
+        }
+        if(!isAlreadyInList){
         var li = document.createElement('li');
         li.innerText = element;
         list.appendChild(li); 
+        }
+        if(!arr.includes(element))arr.push(element);
 }
 
   
@@ -56,12 +64,13 @@ function addToList(list,element){
  * @param {*} list La liste a laquelle supprimer l'element
  * @param {*} element L'element a supprimer
  */
-function removeFromList(list,element){
+function removeFromList(list,element,arr){
     for(i=0;i<list.children.length;i++){
         if (list.children[i].innerHTML==element){
             list.removeChild(list.children[i]);
         }
     }
+    if(arr.includes(element))arr.splice(arr.indexOf(element),1);
 }
 
 /**
@@ -126,7 +135,7 @@ function generateGroups(allLearners){
     let groupOne = [];                      //Le groupe 1
     let groupTwo = [];                      //Le groupe 2
     let groups = [groupOne,groupTwo];       //La liste des groupes qui seront retourné a la fin du traitement
-    let strongsOne = 0;                     //Le nombre d'apprenants "forts" dans le groupe 1
+    let strongOne = 0;                     //Le nombre d'apprenants "forts" dans le groupe 1
     let strongTwo = 0;                      //Le nombre d'apprenants "forts" dans le groupe 2
     let weakOne = 0;                        //Le nombre d'apprenants "faible" dans le groupe 1
     let weakTwo = 0;                        //Le nombre d'apprenants "faible" dans le groupe 2
@@ -153,9 +162,9 @@ function generateGroups(allLearners){
             let rand = Math.round(Math.random());
 
             if(rand == 0 ){
-                if(isStrong(learner) && strongsOne <= strongTwo && groupOne.length < Math.ceil(totalLearners/2) ){
+                if(isStrong(learner) && strongOne <= strongTwo && groupOne.length < Math.ceil(totalLearners/2) ){
                     groupOne.push(learner);
-                    strongsOne++;
+                    strongOne++;
                     learners.splice(learners.indexOf(learner), 1 );
 
                 } else if(isWeak(learner) && weakOne <= weakTwo && groupOne.length < Math.ceil(totalLearners/2)){
@@ -169,9 +178,9 @@ function generateGroups(allLearners){
                 }
 
             } else {
-                if(isStrong(learner) && strongsTwo <= strongOne && groupTwo.length < Math.ceil(totalLearners/2) ){
+                if(isStrong(learner) && strongTwo <= strongOne && groupTwo.length < Math.ceil(totalLearners/2) ){
                     groupTwo.push(learner);
-                    strongsTwo++;
+                    strongTwo++;
                     learners.splice(learners.indexOf(learner), 1 );
 
                 } else if(isWeak(learner) && weakTwo <= weakOne && groupTwo.length < Math.ceil(totalLearners/2)){
@@ -187,7 +196,6 @@ function generateGroups(allLearners){
 
         })
     }
-    console.log(groups);
     return groups;
 }
 
@@ -254,11 +262,10 @@ function fillAllSelects(){
  * @param {*} idList L'ID de la list a passer en argument
  * @param {*} idSelect L'ID du select dans lequel chercher l'element a passer en argument
  */
-function addEventAdd(idBtn,idList,idSelect){
+function addEventAdd(idBtn,idList,idSelect,list){
     document.getElementById(idBtn).addEventListener("click",()=>{
-        console.log(document.getElementById(idSelect).value);
         addToList(document.getElementById(idList),
-        document.getElementById(idSelect).value);
+        document.getElementById(idSelect).value,list);
         
     })
 }
@@ -268,25 +275,57 @@ function addEventAdd(idBtn,idList,idSelect){
  * @param {*} idList L'ID de la list a passer en argument
  * @param {*} idSelect L'ID du select dans lequel chercher l'element a passer en argument
  */
-function addEventRemove(idBtn,idList,idSelect){
+function addEventRemove(idBtn,idList,idSelect,list){
     document.getElementById(idBtn).addEventListener("click",()=>{
         removeFromList(document.getElementById(idList),
-        document.getElementById(idSelect).value);
+        document.getElementById(idSelect).value,list);
     })
 }
 
 
+//Gestionairre d'event
+
 //Quand on appuie sur le bouton ajouter a la liste des forts l'event s'execute
-addEventAdd("add strong","list strong","strongs")
+addEventAdd("add strong","list strong","strongs",strongLevel)
 
 //Quand on appuie sue le bouton supprimer a la liste des forts l'event s'execute
-addEventRemove("remove strong","list strong","strongs")
+addEventRemove("remove strong","list strong","strongs",strongLevel)
 
 //Quand on appuie sur le bouton ajouter a la liste des faibles, l'event s'execute
-addEventAdd("add weak", "list weak","weaks");
+addEventAdd("add weak", "list weak","weaks",weakLevel);
  
 //Quand on appuie sur le bouton supprimer a la liste des faibles, l'event s'execute
-addEventRemove("remove weak","list weak","weaks");
+addEventRemove("remove weak","list weak","weaks",weakLevel);
+
+//Quand on appuie sur le bouton ajouter a la liste Lundi
+addEventAdd("add monday","monday","mondays",cantMonday)
+
+//Quand on appuie sue le bouton supprimer a la liste Lundi
+addEventRemove("remove monday","monday","mondays",cantMonday)
+
+//Quand on appuie sur le bouton ajouter a la liste Mardi
+addEventAdd("add tuesday","tuesday","tuesdays",cantTuesday)
+
+//Quand on appuie sue le bouton supprimer a la liste Mardi
+addEventRemove("remove tuesday","tuesday","tuesdays",cantTuesday)
+
+//Quand on appuie sur le bouton ajouter a la liste Mercredi
+addEventAdd("add wedensday","wedensday","wedensdays",cantWedensday)
+
+//Quand on appuie sue le bouton supprimer a la liste Mercredi
+addEventRemove("remove wedensday","wedensday","wedensdays",cantWedensday)
+
+//Quand on appuie sur le bouton ajouter a la liste Jeudi
+addEventAdd("add thursday","thursday","thursdays",cantThursday)
+
+//Quand on appuie sue le bouton supprimer a la liste Jeudi
+addEventRemove("remove thursday","thursday","thursdays",cantThursday)
+
+//Quand on appuie sur le bouton ajouter a la liste Vendredi
+addEventAdd("add friday","friday","fridays",cantFriday)
+
+//Quand on appuie sue le bouton supprimer a la liste Vendredi
+addEventRemove("remove friday","friday","fridays",cantFriday)
  
 
 

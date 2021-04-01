@@ -17,19 +17,18 @@
             <article>
                 <label for="">Séléctionnez les apprenants avec un bon niveau</label>
 
-                <select  name="list_apprenant" id="">
+                <select  name="list_apprenant" id="strongs">
                     <option value=""></option>
                 </select>
-
+                <br>
                 <!-- button d'éxécution -->
-                <button type="submit">Ajouter</button>
-                <button type="submit">Supprimer</button> 
+                <button id="add strong" class ="add" type="submit">Ajouter</button>
+                <button id="remove strong" class ="remove" type="submit">Supprimer</button> 
             </article>
-
         <!-- Contient la liste des apprenants de bon niveau -->
             <article>  
                 <label for="">Listes des apprenants avec un bon niveau</label>
-                <ul id="">
+                <ul id="list strong">
                     <li></li>
                 </ul>
             </article>
@@ -42,20 +41,20 @@
             <article>
                 <label for="">Séléctionnez les apprenants avec bas niveau</label>
     
-                <select name="list_apprenant" id="">
+                <select name="list_apprenant" id="weaks">
                     <option value=""></option>
                 </select>
-    
+                <br>
                 <!-- button d'éxécution -->
-                <button type="submit">Ajouter</button>
-                <button type="submit">Supprimer</button> 
+                <button id="add weak" class="add" type="submit">Ajouter</button>
+                <button id="remove weak" class="remove" type="submit">Supprimer</button> 
             </article> 
 
     
             <!-- Contient la liste des apprenants de bas niveau -->
             <article>  
                 <label for="">Listes des apprenants avec un bas niveau</label>
-                <ul id="">
+                <ul id="list weak" id="">
                     <li></li>
                 </ul>
             </article>
@@ -70,15 +69,15 @@
                 <select name="list_apprenant" id="">
                     <option value=""></option>
                 </select>
-        
-                <button type="submit">Ajouter</button>
-                <button type="submit">Supprimer</button> 
+                <br>
+                <button id="add monday" class="add" type="submit">Ajouter</button>
+                <button id="remove monday" class="remove" type="submit">Supprimer</button> 
             </article>
         
             <!-- Afficher les apprenants indisponible chaque jours -->
             <article>  
                 <label for="">Indisponible le Lundi</label>
-                <ul id="">
+                <ul id="monday">
                     <li></li>
                 </ul>
             </article>
@@ -93,14 +92,14 @@
                 <select name="list_apprenant" id="">
                     <option value=""></option>
                 </select>
-        
-                <button type="submit">Ajouter</button>
-                <button type="submit">Supprimer</button> 
+                <br>
+                <button class="add" type="submit">Ajouter</button>
+                <button class="remove" type="submit">Supprimer</button> 
             </article>
             
             <article>  
                 <label for="">Indisponible le Mardi</label>
-                <ul id="">
+                <ul id="tuesday">
                     <li></li>
                 </ul>
             </article>
@@ -115,14 +114,14 @@
             <select name="list_apprenant" id="">
                 <option value=""></option>
             </select>
-        
-            <button type="submit">Ajouter</button>
-            <button type="submit">Supprimer</button> 
+            <br>
+            <button class="add" type="submit">Ajouter</button>
+            <button class="remove" type="submit">Supprimer</button> 
             </article>
             
             <article>  
                 <label for="">Indisponible le Mercredi</label>
-                <ul id="">
+                <ul id="wednesday">
                     <li></li>
                 </ul>
             </article>
@@ -137,14 +136,14 @@
                 <select name="list_apprenant" id="">
                     <option value=""></option>
                 </select>
-            
-                <button type="submit">Ajouter</button>
-                <button type="submit">Supprimer</button> 
+                <br>
+                <button class="add" type="submit">Ajouter</button>
+                <button class="remove" type="submit">Supprimer</button> 
             </article>
               
             <article>  
                 <label for="">Indisponible le Jeudi</label>
-                <ul id="">
+                <ul id="thursday">
                     <li></li>
                 </ul>
             </article>
@@ -159,15 +158,15 @@
                 <select name="list_apprenant" id="">
                     <option value=""></option>
                 </select>
-            
-                <button type="submit">Ajouter</button>
-                <button type="submit">Supprimer</button> 
+                <br>
+                <button class="add" type="submit">Ajouter</button>
+                <button class="remove" type="submit">Supprimer</button> 
             </article>
 
         
             <article>  
                 <label for="">Indisponible le Vendredi</label>
-                <ul id="">
+                <ul id="friday">
                     <li></li>
                 </ul>
             </article>
@@ -177,7 +176,7 @@
 <!-- ------------------------------------------------------------------------------------------------ -->
 
     <footer>
-        <button type="submit">Générer les groupes</button>
+        <button type="submit" id="TeamGen">Générer les groupes</button>
         <script src="script.js"></script>
     </footer>
 

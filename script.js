@@ -1,7 +1,6 @@
 //La liste de tout les apprenants
-var apprenants = ['Lucas Steichen', 'Noureddine Benomar', 'Noureddine Benomar', 'Tamara ALCALA JIMENEZ',
-'Valentin Creuillenet','Alexandre Labsi', 'Maxime Guichon', 'Yohan Beneito', 'Laurene Georges', 'Sidney Carlos',
-'Juan Roussille','Lorenzo Cima', 'Maïalen Watrigant'];
+var apprenants = ["Maxime","Juan","Yohan","Laurène","Valentin","Fanny","Noureddine","Marylise",
+"Lorenzo","Alexandre","Tamara","Maïalen","Lucas","Sidney","Vincent"];
 
 //La liste de tout les apprenants considéres comme "forts"
 var strongLevel = [];
@@ -58,14 +57,18 @@ function addToList(list,element){
  * @param {*} element L'element a supprimer
  */
 function removeFromList(list,element){
-    element.remove();
+    for(i=0;i<list.children.length;i++){
+        if (list.children[i].innerHTML==element){
+            list.removeChild(list.children[i]);
+        }
+    }
 }
 
 /**
  * Cette fonction indique si un apprenants ets considéré comme fort part le formateur
  * @param {*} leanrer L'apprenant à vérifier
  */
-function isStrong(leanrer){
+function isStrong(learner){
     if(strongLevel.includes(learner))return true;
     else return false;
 }
@@ -102,12 +105,24 @@ function canBeinGroupTwo(learner){
     && !cantThursday.includes(learner)) return true;
     else return false;
 }
+/**
+ * Cette fonction copie un tableau passé en argument
+ * @param {*} arr Le tableau a copié
+ */
+function copyArray(arr){
+    let newArr= [];
+    arr.forEach(element=>{
+        newArr[newArr.length] = element;
+    })
+    return newArr;
+}
 
 /**
  * Cette fonction génère duex groupe d'apprenants en fonction contraites choisits par l'utilisateur et retourne les deux groupe dans un tableau
  * @param {*} learners La liste de tout les apprenants
  */
-function generateGroups(learners){
+function generateGroups(allLearners){
+    let learners =copyArray(allLearners);    //On copie la tableau passé en argument pour ne pas modifier l'original
     let groupOne = [];                      //Le groupe 1
     let groupTwo = [];                      //Le groupe 2
     let groups = [groupOne,groupTwo];       //La liste des groupes qui seront retourné a la fin du traitement
@@ -117,60 +132,62 @@ function generateGroups(learners){
     let weakTwo = 0;                        //Le nombre d'apprenants "faible" dans le groupe 2
     let totalLearners = learners.length;    //Le nombre total d'apprenants
 
-    while( (groupOne.length + groupTwo.length) < totalLearners ){
+
+    while( learners.length>0){
             
-        learners.foreach( learner =>{
+        learners.forEach( learner =>{
 
             if(!canBeinGroupOne(learner)){
-                groupTwo += learner;
-                if(isStrong(leanrer))strongTwo++;
-                if(isWeak(leanrer))weakTwo++;
-                learners.splice(learners.indexOf(leanrer), 1 );
+                groupTwo.push(learner);
+                if(isStrong(learner))strongTwo++;
+                if(isWeak(learner))weakTwo++;
+                learners.splice(learners.indexOf(learner), 1 );
             }
             if(!canBeinGroupTwo(learner)){
-                groupOne += learner;
-                if(isStrong(leanrer))strongOne++;
-                if(isWeak(leanrer))weakOne++;
-                learners.splice(learners.indexOf(leanrer), 1 );
+                groupOne.push(learner);
+                if(isStrong(learner))strongOne++;
+                if(isWeak(learner))weakOne++;
+                learners.splice(learners.indexOf(learner), 1 );
             } 
 
-            let rand = Math.round(Math.random);
+            let rand = Math.round(Math.random());
 
-            if(rand === 0 ){
+            if(rand == 0 ){
                 if(isStrong(learner) && strongsOne <= strongTwo && groupOne.length < Math.ceil(totalLearners/2) ){
-                    groupOne += learner;
+                    groupOne.push(learner);
                     strongsOne++;
-                    learners.splice(learners.indexOf(leanrer), 1 );
+                    learners.splice(learners.indexOf(learner), 1 );
 
                 } else if(isWeak(learner) && weakOne <= weakTwo && groupOne.length < Math.ceil(totalLearners/2)){
-                    groupOne += learner;
+                    groupOne.push(learner);
                     weakOne++;
-                    learners.splice(learners.indexOf(leanrer), 1 );
+                    learners.splice(learners.indexOf(learner), 1 );
 
                 } else if(groupOne.length < Math.ceil(totalLearners/2)){
-                    groupOne += leanrer;
-                    learners.splice(learners.indexOf(leanrer), 1 );
+                    groupOne.push(learner);
+                    learners.splice(learners.indexOf(learner), 1 );
                 }
 
             } else {
                 if(isStrong(learner) && strongsTwo <= strongOne && groupTwo.length < Math.ceil(totalLearners/2) ){
-                    groupTwo += learner;
+                    groupTwo.push(learner);
                     strongsTwo++;
-                    learners.splice(learners.indexOf(leanrer), 1 );
+                    learners.splice(learners.indexOf(learner), 1 );
 
                 } else if(isWeak(learner) && weakTwo <= weakOne && groupTwo.length < Math.ceil(totalLearners/2)){
-                    groupTwo += learner;
+                    groupTwo.push(learner);
                     weakTwo++;
-                    learners.splice(learners.indexOf(leanrer), 1 );
+                    learners.splice(learners.indexOf(learner), 1 );
                     
                 } else if(groupTwo.length < Math.ceil(totalLearners/2)){
-                    groupTwo += leanrer;
-                    learners.splice(learners.indexOf(leanrer), 1 );
+                    groupTwo.push(learner);
+                    learners.splice(learners.indexOf(learner), 1 );
                 }
             }
 
         })
     }
+    console.log(groups);
     return groups;
 }
 
@@ -205,6 +222,7 @@ function displayGroups(groups){
        
     }
     table.appendChild(tbody);
+    document.body.appendChild(table);
 }
 
 
@@ -214,6 +232,7 @@ function displayGroups(groups){
  * Cette fonction distribue sur chaque liste déroulante tout les apprenants
  */
 function fillAllSelects(){
+    let selectall=document.getElementsByTagName("select");
     for(let i=0; i<selectall.length; i++){
         fillDropdown(selectall[i], apprenants);  
     }
@@ -223,8 +242,7 @@ function fillAllSelects(){
  * Appel des fonctions
  */
 
-fillDropdown(select, apprenants);
-fillAllSelects()
+ fillAllSelects()
 
 /**
  * Gestionnaire d'event
@@ -238,8 +256,10 @@ fillAllSelects()
  */
 function addEventAdd(idBtn,idList,idSelect){
     document.getElementById(idBtn).addEventListener("click",()=>{
+        console.log(document.getElementById(idSelect).value);
         addToList(document.getElementById(idList),
-        document.getElementById(idSelect).options[document.getElementById(idSelect)].innerHTML);
+        document.getElementById(idSelect).value);
+        
     })
 }
 /**
@@ -251,7 +271,7 @@ function addEventAdd(idBtn,idList,idSelect){
 function addEventRemove(idBtn,idList,idSelect){
     document.getElementById(idBtn).addEventListener("click",()=>{
         removeFromList(document.getElementById(idList),
-        document.getElementById(idSelect).options[document.getElementById(idSelect)].innerHTML);
+        document.getElementById(idSelect).value);
     })
 }
 
@@ -270,7 +290,8 @@ addEventRemove("remove weak","list weak","weaks");
  
 
 
+
 //Qaund on appuie sur le bouton générer les groupes, les groupes sont généré
 document.getElementById("TeamGen").addEventListener("click",()=>{
-    displayGroups(generateGroups());
+    displayGroups(generateGroups(apprenants));
 })

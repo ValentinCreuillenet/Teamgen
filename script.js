@@ -220,7 +220,7 @@ function displayGroups(groups){
     table.appendChild(header);
     document.body.appendChild(table);
 
-    for(i=0;i<Math.ceil(apprenants.length/2);i++){
+    for(i=0;i<Math.ceil((groups[0].length+groups[1].length)/2);i++){
         let row = document.createElement("tr");
         let cell1 = document.createElement("td");
         let cell2 = document.createElement("td");
@@ -242,7 +242,9 @@ function displayGroups(groups){
 function fillAllSelects(){
     let selectall=document.getElementsByTagName("select");
     for(let i=0; i<selectall.length; i++){
-        fillDropdown(selectall[i], apprenants);  
+        getStudents((students)=>{
+            fillDropdown(selectall[i], students);  
+        })
     }
 }
 
@@ -332,5 +334,36 @@ addEventRemove("remove friday","friday","fridays",cantFriday)
 
 //Qaund on appuie sur le bouton générer les groupes, les groupes sont généré
 document.getElementById("TeamGen").addEventListener("click",()=>{
-    displayGroups(generateGroups(apprenants));
+    getStudents((students)=>{
+        displayGroups(generateGroups(students));
+    })
+    
 })
+
+/**
+ * Va chercher les students sur la base de données, ou récupère une liste par défault le cas échéant
+ * @param {*} callback Le traitment a éffectuer sur les students
+ */
+function getStudents(callback){
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET","studentsURL");
+
+    xhr.onload = ()=>{
+        if(xhr.status == 200){
+            callback(xhr.responseText);
+        }else{
+            callback(getDefaultStudents());
+        }
+    }
+    xhr.send();
+}
+
+/**
+ * Retoure une liste des students par default
+ * @returns 
+ */
+function getDefaultStudents(){
+    return ["Princesse","Juan","Yohan","Gourdasse","Valentin","Fanny","Noureddine","Marylise",
+    "Lorenzo","Alexandre","Tamara","Maïalen","Lucas","Sidney","Vincent"];
+}

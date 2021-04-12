@@ -345,19 +345,37 @@ document.getElementById("TeamGen").addEventListener("click",()=>{
  * @param {*} callback Le traitment a éffectuer sur les students
  */
 function getStudents(callback){
+
+    
     let xhr = new XMLHttpRequest();
 
-    xhr.open("GET","studentsURL");
+    xhr.open("GET","http://localhost:8888/students");
 
     xhr.onload = ()=>{
         if(xhr.status == 200){
-            callback(xhr.responseText);
+            callback(JSON.parse(xhr.responseText));
         }else{
             callback(getDefaultStudents());
         }
     }
     xhr.send();
 }
+
+/**
+ * Ajoute un nouveau stagiarei ala liste sur le serveur
+ * @param {*} student 
+ */
+function postStudent(student){
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("POST","http://localhost:8888/students");
+
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.send(student);
+}
+
+postStudent("student=Maurice");
 
 /**
  * Retoure une liste des students par default
